@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Ring Generator</title>
+  <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Feedback Ring Generator</h1>
+    
+    <p class="intro">
+      Powered by <strong>SWI-Prolog</strong> compiled to WebAssembly.
+      Prolog's declarative backtracking search finds valid feedback rings
+      without imperative loops or complex state management.
+      What would be dozens of lines in JavaScript is a few elegant clauses in Prolog.
+    </p>
+    
+    <label for="names">Team Members</label>
+    <textarea id="names" placeholder="alice&#10;bob&#10;carol&#10;dave"></textarea>
+    <p class="hint">One name per line, or comma-separated. Names converted to lowercase.</p>
+    
+    <button id="generate" disabled>Generate Ring</button>
+    <span id="status"></span>
+    
+    <div id="output" class="output"></div>
+    
+    <details>
+      <summary>View Prolog Source</summary>
+      <pre><code id="prolog-code">Loading...</code></pre>
+    </details>
+  </div>
+  
+  <script src="/swipl-bundle.js"></script>
+  <script type="module" src="./src/js/app.js"></script>
+</body>
+</html>

@@ -1,7 +1,33 @@
 {
-  "name": "feedback-ring",
+  "name": "ring-generator",
   "version": "1.0.0",
+  "description": "Browser tool that builds a team ring: an ordered cycle where each person gives feedback to the next. SWI-Prolog in WebAssembly finds a valid cycle and skips giver-receiver pairs already used in past sessions.",
+  "keywords": [
+    "ring",
+    "peer-feedback",
+    "team-rotation",
+    "gift-exchange",
+    "hamiltonian-cycle",
+    "swi-prolog",
+    "prolog",
+    "webassembly",
+    "wasm"
+  ],
+  "author": {
+    "name": "cerob",
+    "email": "cerob@users.noreply.github.com",
+    "url": "https://github.com/cerob"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cerob/ring-generator.git"
+  },
+  "license": "MIT",
   "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "serve": "vite --open",

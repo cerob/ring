@@ -66,13 +66,31 @@ function formatRing(ring) {
   return pairs.join('\n');
 }
 
+function ringGoal() {
+  const seedText = document.getElementById('seed').value.trim();
+  if (seedText === '') {
+    return 'random_feedback_ring(R)';
+  }
+  if (!/^\d+$/.test(seedText)) {
+    return null;
+  }
+  return `seeded_random_feedback_ring(${seedText}, R)`;
+}
+
 function generate() {
   const output = document.getElementById('output');
   const input = document.getElementById('names').value;
   const names = parseNames(input);
+  const goal = ringGoal();
   
   if (names.length < 2) {
     output.textContent = 'Need at least 2 names.';
+    output.className = 'output error';
+    return;
+  }
+
+  if (!goal) {
+    output.textContent = 'Seed must be a non-negative integer.';
     output.className = 'output error';
     return;
   }
@@ -88,8 +106,8 @@ function generate() {
       swipl.prolog.call(`assertz(team_member(${name}))`);
     }
     
-    // Query for random ring
-    const query = swipl.prolog.query('random_feedback_ring(R)');
+    // Query for random ring, seeded when the field is filled
+    const query = swipl.prolog.query(goal);
     const result = query.next();
     query.close();
     

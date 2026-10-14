@@ -11,6 +11,7 @@
     Usage (from JS):
         set_team([alice, bob, carol, dave]).
         random_feedback_ring(R).
+        seeded_random_feedback_ring(Seed, R).
         all_rings(Rs).
 */
 
@@ -107,6 +108,13 @@ random_feedback_ring(Ring) :-
     random_permutation(Members, [First|Rest]),
     once(build(First, Rest, First, Path)),
     Ring = [First|Path].
+
+% Same generator, started from a fixed RNG seed so the ring repeats.
+seeded_random_feedback_ring(Seed, Ring) :-
+    integer(Seed),
+    Seed >= 0,
+    set_random(seed(Seed)),
+    random_feedback_ring(Ring).
 
 /* ---------------- Session Recording ---------------- */
 

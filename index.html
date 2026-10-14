@@ -68,8 +68,12 @@
     <textarea id="names" placeholder="alice&#10;bob&#10;carol&#10;dave"></textarea>
     <p class="hint">One name per line or comma-separated. Names converted to lowercase, because words starting in uppercase are reserved for variables in Prolog.</p>
     
-    <button id="generate" disabled>Generate Ring</button>
-    <span id="status"></span>
+    <div class="actions">
+      <button id="generate" disabled>Generate Ring</button>
+      <label class="seed-label" for="seed">using seed</label>
+      <input id="seed" type="text" inputmode="numeric" placeholder="optional" autocomplete="off" spellcheck="false">
+      <span id="status"></span>
+    </div>
     
     <div id="output" class="output"></div>
     

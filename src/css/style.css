@@ -16,6 +16,23 @@ body {
   padding: 2rem;
 }
 
+a {
+  color: #000;
+  font-weight: 600;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+a:visited {
+  color: #333;
+}
+
+a:hover {
+  color: #fff;
+  background: #111;
+  text-decoration: none;
+}
+
 .container {
   max-width: 640px;
   width: 100%;

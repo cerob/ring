@@ -137,3 +137,11 @@ details pre code.hljs {
   color: #666;
   font-style: italic;
 }
+
+.site-footer {
+  margin-top: 2.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #ccc;
+  font-size: 0.75rem;
+  color: #666;
+}

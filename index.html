@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback Ring Generator</title>
-  <meta name="description" content="Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
-  <meta name="abstract" content="A browser tool that uses SWI-Prolog compiled to WebAssembly to build a feedback ring: an ordered cycle of team members where each person gives feedback to the next and previously used giver-receiver pairs are excluded.">
-  <meta name="keywords" content="feedback ring, peer feedback, team rotation, giver receiver pairs, SWI-Prolog, WebAssembly, Prolog">
+  <title>Ring Generator</title>
+  <meta name="description" content="Generate a team ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
+  <meta name="abstract" content="A browser tool that uses SWI-Prolog compiled to WebAssembly to build a ring: an ordered cycle of team members where each person gives feedback to the next and previously used giver-receiver pairs are excluded.">
+  <meta name="keywords" content="ring, peer feedback, team rotation, giver receiver pairs, SWI-Prolog, WebAssembly, Prolog">
   <meta name="author" content="cerob">
-  <meta name="application-name" content="Feedback Ring Generator">
+  <meta name="application-name" content="Ring Generator">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -17,23 +17,23 @@
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="Feedback Ring Generator">
-  <meta property="og:title" content="Feedback Ring Generator">
-  <meta property="og:description" content="Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
+  <meta property="og:site_name" content="Ring Generator">
+  <meta property="og:title" content="Ring Generator">
+  <meta property="og:description" content="Generate a team ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Feedback Ring Generator">
-  <meta name="twitter:description" content="Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
+  <meta name="twitter:title" content="Ring Generator">
+  <meta name="twitter:description" content="Generate a team ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Feedback Ring Generator",
+      "name": "Ring Generator",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
       "browserRequirements": "Requires JavaScript and WebAssembly",
-      "description": "Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.",
+      "description": "Generate a team ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.",
       "abstract": "Each person gives feedback to the next person in a cycle. The generator skips giver-receiver pairs that already happened.",
       "inLanguage": "en",
       "isAccessibleForFree": true,
@@ -43,25 +43,25 @@
         "priceCurrency": "USD"
       },
       "featureList": [
-        "Generate a feedback ring for a team",
+        "Generate a ring for a team",
         "Skip giver-receiver pairs already used in past sessions",
         "Run SWI-Prolog in the browser with WebAssembly"
       ],
-      "keywords": "feedback ring, peer feedback, SWI-Prolog, WebAssembly"
+      "keywords": "ring, peer feedback, SWI-Prolog, WebAssembly"
     }
   </script>
   <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Feedback Ring Generator</h1>
+    <h1>Ring Generator</h1>
 
     <p class="intro">Use it for peer feedback, gift exchange, or any other time you need to assign people to each other in a cycle.</p>
     <p class="intro">
       <i>Scientifically,</i> this is a "directed <a href="https://en.wikipedia.org/wiki/Hamiltonian_path">Hamiltonian cycle</a> generator in a <a href="https://en.wikipedia.org/wiki/Complete_graph">complete graph</a> with no self-loops and no repeated edges".
     </p>
     <p class="intro">
-      <i>Technically,</i> this is implemented in SWI-<a href="https://en.wikipedia.org/wiki/Prolog">Prolog</a> and can run in browser with <a href="https://webassembly.org/">WebAssembly</a>. Prolog's declarative <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> search finds valid feedback rings without <a href="https://en.wikipedia.org/wiki/Imperative_programming">imperative</a> <a href="https://en.wikipedia.org/wiki/Loop_(statement)">loops</a> or complex <a href="https://en.wikipedia.org/wiki/State_management">state management</a>. What would be dozens of lines in JavaScript is a few elegant clauses in Prolog.
+      <i>Technically,</i> this is implemented in SWI-<a href="https://en.wikipedia.org/wiki/Prolog">Prolog</a> and can run in browser with <a href="https://webassembly.org/">WebAssembly</a>. Prolog's declarative <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> search finds valid rings without <a href="https://en.wikipedia.org/wiki/Imperative_programming">imperative</a> <a href="https://en.wikipedia.org/wiki/Loop_(statement)">loops</a> or complex <a href="https://en.wikipedia.org/wiki/State_management">state management</a>. What would be dozens of lines in JavaScript is a few elegant clauses in Prolog.
     </p>
     
     <label for="names">Team Members:</label>
@@ -79,7 +79,7 @@
     </details>
 
     <footer class="site-footer">
-      <p>Feedback Ring Generator by <a href="https://github.com/cerob">cerob</a>. MIT License.<br>Prolog in browser made possible by <a href="https://www.npmjs.com/package/swipl-wasm">SWI-Prolog WebAssembly</a>.</p>
+      <p>Ring Generator by <a href="https://github.com/cerob">cerob</a>. MIT License.<br>Prolog in browser made possible by <a href="https://www.npmjs.com/package/swipl-wasm">SWI-Prolog WebAssembly</a>.</p>
     </footer>
   </div>
   

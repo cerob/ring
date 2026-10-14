@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "highlight.js": "^11.12.0",
     "swipl-wasm": "^3.7.0"
   },
   "devDependencies": {

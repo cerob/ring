@@ -1,3 +1,9 @@
+import hljs from 'highlight.js/lib/core';
+import prolog from 'highlight.js/lib/languages/prolog';
+import 'highlight.js/styles/github.css';
+
+hljs.registerLanguage('prolog', prolog);
+
 let swipl = null;
 let prologCode = '';
 
@@ -28,8 +34,9 @@ async function init() {
     statusEl.className = '';
     generateBtn.disabled = false;
     
-    // Show code in details
-    document.getElementById('prolog-code').textContent = prologCode;
+    const codeEl = document.getElementById('prolog-code');
+    codeEl.textContent = prologCode;
+    hljs.highlightElement(codeEl);
     
   } catch (err) {
     statusEl.textContent = 'Failed to load: ' + err.message;

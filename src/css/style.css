@@ -10,12 +10,17 @@ body {
   line-height: 1.5;
   color: #111;
   background: #fafafa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
 }
 
 .container {
   max-width: 640px;
+  width: 100%;
   margin: 0 auto;
+  flex: 1;
 }
 
 h1 {
@@ -55,7 +60,7 @@ textarea:focus {
 }
 
 .hint {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #666;
   margin-top: 0.25rem;
   margin-bottom: 1rem;
@@ -121,6 +126,11 @@ pre {
   overflow-x: auto;
   font-size: 0.8rem;
   line-height: 1.4;
+}
+
+details pre code.hljs {
+  padding: 0;
+  overflow: visible;
 }
 
 .loading {

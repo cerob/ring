@@ -19,7 +19,10 @@ async function init() {
     swipl = await SWIPL({ arguments: ['-q'] });
     
     // Load Prolog code
-    const response = await fetch('/feedback_ring.pl');
+    const response = await fetch(`${import.meta.env.BASE_URL}feedback_ring.pl`);
+    if (!response.ok) {
+      throw new Error(`Failed to load Prolog source (${response.status})`);
+    }
     prologCode = await response.text();
     
     // Write code to virtual filesystem and consult

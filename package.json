@@ -35,6 +35,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "coi-serviceworker": "^0.1.7",
     "highlight.js": "^11.12.0",
     "swipl-wasm": "^3.7.0"
   },

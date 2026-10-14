@@ -4,6 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feedback Ring Generator</title>
+  <meta name="description" content="Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
+  <meta name="abstract" content="A browser tool that uses SWI-Prolog compiled to WebAssembly to build a feedback ring: an ordered cycle of team members where each person gives feedback to the next and previously used giver-receiver pairs are excluded.">
+  <meta name="keywords" content="feedback ring, peer feedback, team rotation, giver receiver pairs, SWI-Prolog, WebAssembly, Prolog">
+  <meta name="author" content="cerob">
+  <meta name="application-name" content="Feedback Ring Generator">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#fafafa">
+  <meta name="color-scheme" content="light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Feedback Ring Generator">
+  <meta property="og:title" content="Feedback Ring Generator">
+  <meta property="og:description" content="Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Feedback Ring Generator">
+  <meta name="twitter:description" content="Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Feedback Ring Generator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires JavaScript and WebAssembly",
+      "description": "Generate a team feedback ring in the browser. SWI-Prolog in WebAssembly finds a cycle so each person reviews the next, without reusing past pairs.",
+      "abstract": "Each person gives feedback to the next person in a cycle. The generator skips giver-receiver pairs that already happened.",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Generate a feedback ring for a team",
+        "Skip giver-receiver pairs already used in past sessions",
+        "Run SWI-Prolog in the browser with WebAssembly"
+      ],
+      "keywords": "feedback ring, peer feedback, SWI-Prolog, WebAssembly"
+    }
+  </script>
   <link rel="stylesheet" href="./src/css/style.css">
 </head>
 <body>

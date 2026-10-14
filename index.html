@@ -55,17 +55,18 @@
 <body>
   <div class="container">
     <h1>Feedback Ring Generator</h1>
-    
+
+    <p class="intro">Use it for peer feedback, gift exchange, or any other time you need to assign people to each other in a cycle.</p>
     <p class="intro">
-      Powered by <strong>SWI-Prolog</strong> compiled to WebAssembly.
-      Prolog's declarative backtracking search finds valid feedback rings
-      without imperative loops or complex state management.
-      What would be dozens of lines in JavaScript is a few elegant clauses in Prolog.
+      <i>Scientifically,</i> this is a "directed <a href="https://en.wikipedia.org/wiki/Hamiltonian_path">Hamiltonian cycle</a> generator in a <a href="https://en.wikipedia.org/wiki/Complete_graph">complete graph</a> with no self-loops and no repeated edges".
+    </p>
+    <p class="intro">
+      <i>Technically,</i> this is implemented in SWI-<a href="https://en.wikipedia.org/wiki/Prolog">Prolog</a> and can run in browser with <a href="https://webassembly.org/">WebAssembly</a>. Prolog's declarative <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> search finds valid feedback rings without <a href="https://en.wikipedia.org/wiki/Imperative_programming">imperative</a> <a href="https://en.wikipedia.org/wiki/Loop_(statement)">loops</a> or complex <a href="https://en.wikipedia.org/wiki/State_management">state management</a>. What would be dozens of lines in JavaScript is a few elegant clauses in Prolog.
     </p>
     
-    <label for="names">Team Members</label>
+    <label for="names">Team Members:</label>
     <textarea id="names" placeholder="alice&#10;bob&#10;carol&#10;dave"></textarea>
-    <p class="hint">One name per line, or comma-separated. Names converted to lowercase.</p>
+    <p class="hint">One name per line or comma-separated. Names converted to lowercase, because words starting in uppercase are reserved for variables in Prolog.</p>
     
     <button id="generate" disabled>Generate Ring</button>
     <span id="status"></span>

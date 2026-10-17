@@ -22,6 +22,7 @@
 :- dynamic team_member/1.
 :- dynamic past_ring/2.
 
+
 /* ---------------- Configuration ---------------- */
 
 % symmetric(true):  if A gave feedback to B, then B -> A is also blocked.
@@ -30,6 +31,7 @@ symmetric(false).
 
 % How many recent sessions count as "past". Use `all` for full history.
 history_window(all).
+
 
 /* ---------------- Team Management ---------------- */
 
@@ -46,7 +48,8 @@ team(Members) :-
     length(Members, N),
     N >= 2.
 
-/* ---------------- Ring basics ---------------- */
+
+/* ---------------- Ring Basics ---------------- */
 
 % ring_pair(+Ring, ?Giver, ?Receiver): pairs in a ring, including last -> first.
 ring_pair(Ring, Giver, Receiver) :-
@@ -54,7 +57,8 @@ ring_pair(Ring, Giver, Receiver) :-
     append(Ring, [First], Closed),
     nextto(Giver, Receiver, Closed).
 
-/* ---------------- History rules ---------------- */
+
+/* ---------------- History Rules ---------------- */
 
 counted_ring(Ring) :-
     history_window(all), !,
@@ -83,7 +87,8 @@ allowed(G, R) :-
     G \== R,
     \+ blocked(G, R).
 
-/* ---------------- Ring generation ---------------- */
+
+/* ---------------- Ring Generation ---------------- */
 
 % build(+Current, +Remaining, +First, -Path)
 build(Current, [], First, []) :-
@@ -115,6 +120,7 @@ seeded_random_feedback_ring(Seed, Ring) :-
     Seed >= 0,
     set_random(seed(Seed)),
     random_feedback_ring(Ring).
+
 
 /* ---------------- Session Recording ---------------- */
 

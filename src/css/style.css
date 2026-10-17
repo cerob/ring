@@ -136,6 +136,30 @@ button:disabled {
   cursor: not-allowed;
 }
 
+button.reveal {
+  padding: 0 0.35rem;
+  border: 1px dashed #999;
+  background: transparent;
+  color: #111;
+  font-weight: 600;
+  line-height: inherit;
+}
+
+button.reveal:hover {
+  color: #fff;
+  background: #111;
+  border-color: #111;
+}
+
+button.reveal:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 1px;
+}
+
+.intro [tabindex="-1"]:focus {
+  outline: none;
+}
+
 .output {
   margin-top: 1.5rem;
   padding: 1rem;

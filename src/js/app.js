@@ -142,7 +142,19 @@ function generate() {
   }
 }
 
+function setupReveals() {
+  for (const button of document.querySelectorAll('.reveal')) {
+    button.addEventListener('click', () => {
+      const content = document.getElementById(button.getAttribute('aria-controls'));
+      content.hidden = false;
+      button.remove();
+      content.focus();
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   init();
+  setupReveals();
   document.getElementById('generate').addEventListener('click', generate);
 });

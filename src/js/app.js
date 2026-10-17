@@ -4,6 +4,9 @@ import 'highlight.js/styles/github.css';
 
 hljs.registerLanguage('prolog', prolog);
 
+// Each lap replays the generator from the seed, so huge laps would freeze the tab.
+const MAX_LAP = 10000;
+
 let swipl = null;
 let prologCode = '';
 
@@ -68,20 +71,33 @@ function formatRing(ring) {
 
 function ringGoal() {
   const seedText = document.getElementById('seed').value.trim();
+  const lapText = document.getElementById('lap').value.trim();
+
   if (seedText === '') {
-    return 'random_feedback_ring(R)';
+    if (lapText !== '') {
+      return { error: 'Lap requires a seed.' };
+    }
+    return { goal: 'random_feedback_ring(R)' };
   }
   if (!/^\d+$/.test(seedText)) {
-    return null;
+    return { error: 'Seed must be a non-negative integer.' };
   }
-  return `seeded_random_feedback_ring(${seedText}, R)`;
+  if (lapText === '') {
+    return { goal: `seeded_random_feedback_ring(${seedText}, R)` };
+  }
+
+  const lap = /^\d+$/.test(lapText) ? Number(lapText) : NaN;
+  if (!Number.isInteger(lap) || lap < 1 || lap > MAX_LAP) {
+    return { error: `Lap must be an integer from 1 to ${MAX_LAP}.` };
+  }
+  return { goal: `seeded_random_feedback_ring(${seedText}, ${lap}, R)` };
 }
 
 function generate() {
   const output = document.getElementById('output');
   const input = document.getElementById('names').value;
   const names = parseNames(input);
-  const goal = ringGoal();
+  const { goal, error } = ringGoal();
   
   if (names.length < 2) {
     output.textContent = 'Need at least 2 names.';
@@ -89,8 +105,8 @@ function generate() {
     return;
   }
 
-  if (!goal) {
-    output.textContent = 'Seed must be a non-negative integer.';
+  if (error) {
+    output.textContent = error;
     output.className = 'output error';
     return;
   }
@@ -106,7 +122,7 @@ function generate() {
       swipl.prolog.call(`assertz(team_member(${name}))`);
     }
     
-    // Query for random ring, seeded when the field is filled
+    // Query for random ring, seeded (and optionally lapped) when fields are filled
     const query = swipl.prolog.query(goal);
     const result = query.next();
     query.close();

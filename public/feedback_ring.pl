@@ -12,6 +12,7 @@
         set_team([alice, bob, carol, dave]).
         random_feedback_ring(R).
         seeded_random_feedback_ring(Seed, R).
+        seeded_random_feedback_ring(Seed, Lap, R).
         all_rings(Rs).
 */
 
@@ -116,9 +117,18 @@ random_feedback_ring(Ring) :-
 
 % Same generator, started from a fixed RNG seed so the ring repeats.
 seeded_random_feedback_ring(Seed, Ring) :-
+    seeded_random_feedback_ring(Seed, 1, Ring).
+
+% Lap-th ring (1-based) the seeded generator yields, i.e. the ring you get
+% on the Lap-th call to random_feedback_ring/1 after seeding with Seed.
+seeded_random_feedback_ring(Seed, Lap, Ring) :-
     integer(Seed),
     Seed >= 0,
+    integer(Lap),
+    Lap >= 1,
     set_random(seed(Seed)),
+    Skip is Lap - 1,
+    forall(between(1, Skip, _), random_feedback_ring(_)),
     random_feedback_ring(Ring).
 
 
